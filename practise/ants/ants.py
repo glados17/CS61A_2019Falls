@@ -483,7 +483,7 @@ class ScubaThrower(ThrowerAnt):
 
     name = 'ScubaThrower'
     is_watersafe = True
-    implemented = True
+    implemented = False
     food_cost = 6
 # END Problem 12
 
