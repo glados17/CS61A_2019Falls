@@ -1,0 +1,6 @@
+'scale-correct', (0, 70)
+'link_to_list-correct', (512, 70)
+'cumulative_sum-correct', (1024, 70)
+'is_bst-correct', (1536, 70)
+'Link-correct', (2048, 70)
+'Trees-correct', (2560, 70)
