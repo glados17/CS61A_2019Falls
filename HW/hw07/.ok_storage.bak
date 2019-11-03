@@ -1,0 +1,5 @@
+'longest-increasing-subsequence-correct', (0, 70)
+'make-exp-correct', (512, 70)
+'derive-sum-correct', (1024, 70)
+'derive-product-correct', (1536, 70)
+'derive-exp-correct', (2048, 70)
