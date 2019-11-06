@@ -1,0 +1,28 @@
+{
+    "name": "Lab 10",
+    "endpoint": "cal/cs61a/fa19/lab10",
+    "src": [
+        "expr.py",
+        "repl.py",
+        "lab10.scm"
+    ],
+    "tests": {
+        "expr.py:Name.eval": "doctest",
+        "expr.py:CallExpr.eval": "doctest",
+        "expr.py:LambdaFunction.apply": "doctest",
+        "tests/prologue_expr.py": "ok_test",
+        "tests/prologue_reader.py": "ok_test"
+    },
+    "default_tests": [
+        "Name.eval",
+        "CallExpr.eval"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
