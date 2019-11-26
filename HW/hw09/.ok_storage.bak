@@ -1,0 +1,4 @@
+'replicate-correct', (0, 70)
+'accumulate-correct', (512, 70)
+'accumulate-tail-correct', (1024, 70)
+'multiples_3-correct', (1536, 70)

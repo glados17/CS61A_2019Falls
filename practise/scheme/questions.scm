@@ -1,4 +1,4 @@
-; The solutions for this part are all from others'.
+; The solutions for this part are learned from others'.
 
 
 (define (caar x) (car (car x)))
@@ -9,39 +9,59 @@
 ; Some utility functions that you may find useful to implement.
 
 (define (cons-all first rests)
-  'replace-this-line)
-
-(define (zip pairs)
-  'replace-this-line)
-
-;; Problem 16
-;; Returns a list of two-element lists
-(define (enumerate s)
-  ; BEGIN PROBLEM 16
-  (define (enumerate_helper k output s)
-    (if (null? s) output
-    (enumerate_helper (+ k 1) (append output (list(cons k (list(car s))))) (cdr s))
-    ))
-  (enumerate_helper 0 nil s)
-  )
-  ; END PROBLEM 16
-
-;; Problem 17
-;; List all ways to make change for TOTAL with DENOMS
-
-(define (cons-all first rests)
   (cond
     ((null? rests) nil)
     (else (cons
       (append (cons first nil) (car rests))
       (cons-all first (cdr rests))))))
 
+(define (zip pairs)
+  (list (map car pairs) (map cadr pairs)))
+
+;; Problem 16
+;; Returns a list of two-element lists
+; (define (enumerate s)
+;   ; BEGIN PROBLEM 16
+;   (define (enumerate_helper k output s)
+;     (if (null? s) output
+;     (enumerate_helper (+ k 1) (append output (list(cons k (list(car s))))) (cdr s))
+;     ))
+;   (enumerate_helper 0 nil s)
+;   )
+  ; END PROBLEM 16
+
+(define (enumerate s)
+  ; BEGIN PROBLEM 16
+  (define (enumerate_helper k s)
+    (if (eq? s nil) nil
+    (cons (list k (car s)) (enumerate_helper (+ k 1) (cdr s)))
+    ))
+  (enumerate_helper 0 s)
+  )
+
+
+;; Problem 17
+;; List all ways to make change for TOTAL with DENOMS
+
+
+
 (define (list-change total denoms)
-  ; BEGIN PROBLEM 17
- (cond ((or (null? denoms) (< total 0)) nil)
-  ((= total 0) (list ()))
-  (else 
-    (append (cons-all (car denoms) (list-change (- total (car denoms)) denoms)) (list-change total (cdr denoms))))))
+;   BEGIN PROBLEM 17
+;  (cond ((or (null? denoms) (< total 0)) nil)
+;   ((= total 0) (list ()))
+;   (else 
+;     (append (cons-all (car denoms) (list-change (- total (car denoms)) denoms)) (list-change total (cdr denoms))))))
+
+(cond ((or (< total 0) (null? denoms)) nil)
+      ((= total 0) (list ()))
+    
+    (else (append 
+          (cons-all (car denoms) (list-change (- total (car denoms)) denoms)) 
+          (list-change total (cdr denoms))
+          ))
+)
+)
+
     ; END PROBLEM 17
 
 ;; Problem 18
@@ -55,8 +75,7 @@
 (define let?    (check-special 'let))
 
 ;; Converts all let special forms in EXPR into equivalent forms using lambda
-(define (zip pairs)
-  (list (map car pairs) (map cadr pairs)))
+
 
 (define (let-to-lambda expr)
   (cond ((atom? expr)
